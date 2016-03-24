@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -48,5 +50,59 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public class Carte
+    {
+        int num;
+        int coul;
+
+        public Carte(int num, int coul)
+        {
+            this.num = num;
+            this.coul = coul;
+        }
+    }
+
+    public class Jeu
+    {
+        int nbjoueurs;
+        int curr_carte;
+        Carte[] paquet = new Carte[52];
+
+        public Jeu(int nbjoueurs)
+        {
+            this.nbjoueurs = nbjoueurs;
+            curr_carte = -1;
+            for (int i = 0; i <= 3; i++)
+            {
+                for (int j = 0; j <=12; j++)
+                {
+                    paquet[i*13 + j] = new Carte(i, j);
+                }
+            }
+
+            Random r = new Random();
+            int tmp;
+
+            for (int i = 0; i <= 51; i++)
+            {
+                tmp = r.nextInt(52 - i);
+                SwapCarte(tmp, 51 - i);
+            }
+        }
+
+        private void SwapCarte(int i1, int i2)
+        {
+            Carte tmp = paquet[i1];
+            paquet[i1] = paquet[i2];
+            paquet[i2] = tmp;
+        }
+
+        public Carte TirerCarte()
+        {
+            curr_carte++;
+            return paquet[curr_carte];
+        }
     }
 }
