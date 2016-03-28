@@ -35,13 +35,13 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Photo Cloud"
+        android:text="Prendre photo"
         android:onClick="Photo"
         android:id="@+id/button2"
+        android:layout_marginTop="103dp"
         android:layout_below="@+id/textView"
         android:layout_toLeftOf="@+id/button"
-        android:layout_toStartOf="@+id/button"
-        android:layout_marginTop="104dp" />
+        android:layout_toStartOf="@+id/button" />
 
     <Button
         android:layout_width="wrap_content"

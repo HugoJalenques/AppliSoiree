@@ -1,5 +1,6 @@
 package com.epita.rayanhugo.party2nite;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,19 +10,33 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-
+    private static Button button_cam_sbm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        OnClickButtonListener();
     }
 
+    public void OnClickButtonListener(){
+        button_cam_sbm = (Button)findViewById(R.id.button2);
+        button_cam_sbm.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent_cam = new Intent("com.epita.rayanhugo.party2nite.camera_activity");
+                        startActivity(intent_cam);
+                    }
+                }
+        );
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
